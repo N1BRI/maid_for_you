@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, redirect, render_template, request, url_for
+    Blueprint, current_app, flash, redirect, render_template, request, url_for
 )
 from flask import current_app as app
 from flask_wtf import FlaskForm
@@ -8,7 +8,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime
-import extensions
+from werkzeug.datastructures import ImmutableMultiDict
 from forms import ContactForm
 bp = Blueprint('home', __name__)
 
@@ -20,23 +20,30 @@ def index():
 
 @bp.route('/submit', methods=['GET', 'POST'])
 def submit_quote():
-    print(request.form)
-    # Usage
-    # subject = "New Quote Request"
-    # # body = "{}\nYou have a new request for a quote:\nName: {}\nPhone: {}\nHow did They Hear About Us?: {}\nProperty Type: {}\nSpecfic Areas or Requests: {}\nComments: {}I".format(datetime.now(), request.form['full_name'], request.form['phone'], heard_about[int(request.form['heard_about'])], property_type[int(request.form['property_type'])], request.form['special_attention'], request.form['other_message'])
-    # to_email = "n1bri@tuta.io"
-    # #to_email = "maid4youhk@yahoo.com"
-    # from_email = "maid4uct@gmail.com"
-    # password =  app.config.get("GMAIL")
-
-    # send_email(subject, body, to_email, from_email, password)
+    print(request.form.__str__)
+   
     form = ContactForm(request.form)
-    if extensions.hcaptcha.verify() and form.validate_on_submit():
+    if current_app.config['hcaptcha'].verify() and form.validate_on_submit():
         # Process form data
         flash("Form submitted successfully! We'll be in touch shortly!", 'success')
+        subject = "New Quote Request"
+        body = create_formatted_string_from_wtform(form)
+        print(body)
+        to_email = "maid4youhk@yahoo.com"
+        from_email = "maid4uct@gmail.com"
+        password =  current_app.config["GMAIL"]
+
+        send_email(subject, body, to_email, from_email, password)
         return redirect(url_for('home.index'))
     return render_template('index.html', form=form, scroll_to="#contact-form")
 
+def create_formatted_string_from_wtform(form: FlaskForm) -> str:
+    formatted_string = ""
+    for field in form:
+        if field.name in ['csrf_token']:
+            continue  # Skip the CSRF token field
+        formatted_string += f"{field.label.text}: {field.data}\n"
+    return formatted_string
 
 def send_email(subject, body, to_email, from_email, password):
     # Set up the SMTP server
