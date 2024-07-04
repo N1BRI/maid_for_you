@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Maid for You Housekeeping</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="{{ url_for('static', filename='css/simplex.css')}}" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            /* Set width to 100% */
+            margin: auto;
+            min-height: 400px;
+        }
+
+        .nav-styles {
+            background-color: #4b32c4;
+        }
+
+        .circular-img {
+            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            float: left;
+            margin: 0 15px 15px 0;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(17, 17, 17, 0.308);
+        }
+
+        .carousel-item {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            overflow: visible !important;
+            /* Ensure text always displays */
+            position: relative;
+            /* Add relative positioning */
+        }
+
+        .carousel-caption-custom {
+            position: absolute;
+            bottom: 20px;
+            /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            width: calc(100% - 40px);
+            /* Adjust width */
+        }
+
+
+        @media (max-width: 768px) {
+            .circular-img {
+                float: none;
+                display: block;
+                margin: 0 auto 15px auto;
+            }
+        }
+
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav id="m4u-nav" class="navbar navbar-expand-lg bg-primary fs-6 text" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='img/logo.png')}}" height="120">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <!-- <a class="nav-link active" href="#">Home
+                            <span class="visually-hidden">(current)</span>
+                        </a> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#our_story">Our Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-form">Contact Us</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {% for category, message in messages %}
+        <strong>{{ message }}</strong>
+        {% endfor %}
+        <button type="button" class="btn btn-secondary close" aria-label="Close" data-dismiss="alert" >&times</button>
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+
+    <div lc-helper="background" class="container-fluid py-5 d-flex justify-content-center" style="  background-image: url('./static/img/bg.jpg');
+    background-position: center;
+background-size:cover;
+background-repeat:no-repeat">
+        <div class="p-5 mb-4 lc-block col-xxl-7 col-lg-8 col-12" style=" backdrop-filter: blur(3px) saturate(102%);
+    -webkit-backdrop-filter: blur(3px) saturate(102%);
+    background-color: rgba(255, 255, 255, 0.45);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);">
+            <div class="lc-block">
+                <div editable="rich">
+                    <h2 class="fw-bolder display-3">We clean your home like it's our own.</h2>
+                </div>
+            </div>
+            <div class="lc-block col-md-8">
+                <div editable="rich">
+                    <p class="lead">Experience the pristine difference with Maid for You, your trusted partner in
+                        exceptional cleaning solutions. Our dedicated team ensures your space sparkles, so you can focus
+                        on what matters most.
+                    </p>
+                </div>
+            </div>
+            <div class="lc-block">
+                <a class="btn btn-dark" href="#contact-form" role="button">Get a quote now!</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div data-bs-spy="scroll" data-bs-target="#m4u-nav" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+        <div class="p-3 text-center bordered-container">
+            <h2 id="our_story" class=" display-5 text-center pt-5">Our Story</h2>
+            <div class="row">
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="container pb-1 text-start">
+                                <img src="{{url_for('static', filename='img/carrie.png')}}" class="circular-img"
+                                    alt="Carrie Wardencki-Currier">
+                                <p>👋 Hi, my name is Carrie Wardencki-Currier, and I established Maid For You
+                                    Housekeeping in 2015 with a mission to create a cleaner, healthier, and happier
+                                    environment for all of my residential and business clients. Since I was a little
+                                    girl, I’ve had a passion for cleaning and making spaces tidy. My hobby and passion
+                                    quickly turned into a business as the increasing need for busy individuals,
+                                    families, and companies to outsource these services was rapidly growing.<br><br> The
+                                    business quickly grew by word of mouth, and today the company has a full staff of
+                                    fully vetted, trustworthy, and meticulous individuals ready to tackle any size
+                                    project.
+                                    At Maid For You Housekeeping, we understand the value of a clean space. We believe
+                                    that a clean environment is crucial for productivity, creativity, and overall
+                                    well-being.<br><br> That’s why we’re passionate about providing top-quality home and
+                                    business cleaning services that exceed your expectations.
+                                    With over 7 years of experience in the cleaning industry, we have the expertise and
+                                    qualifications to make that mission a reality. Our team of highly trained, qualified
+                                    professionals is dedicated to providing exceptional cleaning services that leave
+                                    your space spotless and sanitized. We are fully bonded, licensed, and insured, so
+                                    you can have peace of mind while our professional staff does the dirty work!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><br>
+        <div class="container text-center">
+            <h2 id="services" class=" display-5 text-center ">Services</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{url_for('static', filename='img/kitchen-after.jpg')}}" class="img-responsive"
+                        style="width:100%; cursor: pointer;" alt="Image" data-bs-toggle="modal"
+                        data-bs-target="#imageModal1">
+                    <div class="card m-3 bg-white border rounded shadow-sm overflow-hidden">
+                        <div class="card-header">
+                            <h5 class="card-title">Bathroom(s) includes:</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Sink</li>
+                            <li class="list-group-item">Countertop</li>
+                            <li class="list-group-item">Toilet/bidet (if applicable)</li>
+                            <li class="list-group-item">Sweep and wash floors</li>
+                            <li class="list-group-item">Empty trash</li>
+                            <li class="list-group-item">Mirror</li>
+                            <li class="list-group-item">Vanity</li>
+                            <li class="list-group-item">Tub/shower</li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <img src="{{url_for('static', filename='img/microwave-after.jpg')}}" class="img-responsive"
+                        style="width:100%; cursor: pointer;" alt="Image" data-bs-toggle="modal"
+                        data-bs-target="#imageModal2">
+
+                    <div class="card m-3 bg-white border rounded shadow-sm overflow-hidden">
+                        <div class="card-header">
+                            <h5 class="card-title">Living room includes:</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Moderate dusting of furniture</li>
+                            <li class="list-group-item">Ceiling fans</li>
+                            <li class="list-group-item">Sweep floors</li>
+                            <li class="list-group-item">Clean/mop hardwood</li>
+                            <li class="list-group-item">Vacuum carpets/rugs</li>
+                            <li class="list-group-item">Basic tidying up</li>
+                        </ul>
+                        <div class="card-body">
+                            <strong>Add-ons:</strong>
+                            <hr>
+                            <p>Window pane wipe down: $5 per standard size window - $7 per larger window (including
+                                french/sliding doors)</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-4">
+                    <img src="{{url_for('static', filename='img/bedroom-before.jpg')}}" class="img-responsive"
+                        style="width:100%; cursor: pointer;" alt="Image" data-bs-toggle="modal"
+                        data-bs-target="#imageModal3">
+                    <div class="card m-3 bg-white border rounded shadow-sm overflow-hidden">
+                        <div class="card-header">
+                            <h5 class="card-title">Bedroom(s) includes:</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Moderate dusting of furniture</li>
+                            <li class="list-group-item">Ceiling fans</li>
+                            <li class="list-group-item">Sweep floors</li>
+                            <li class="list-group-item">Clean hardwood</li>
+                            <li class="list-group-item">Vacuum carpets/rugs</li>
+                            <li class="list-group-item">Make beds</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5 mb-5">
+                <div class="mt-3 mb-3">
+                    <img src="{{url_for('static', filename='img/cleaning1.jpg')}}" style="height: 100%;"
+                        class="img-fluid rounded" alt="Cleaning">
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <h2 class="mb-3">Ask us today about our gift certificates!</h2>
+                        <h3>Perfect for:</h3>
+                        <h4>Holidays</h4>
+                        <h4>Birthdays</h4>
+                        <h4>Housewarming</h4>
+                        <h4>and much more!</h4>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3 mb-3">
+                        <img src="{{url_for('static', filename='img/giftcert.png')}}" class="img-fluid rounded"
+                            alt="Gift Certificate">
+                    </div>
+
+                </div>
+
+                <div class=" mt-2 mb-2 ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="card-title text-center font-weight-bold">REFERRAL PROGRAM!</h1>
+                            <p class="card-text">
+                                FOR EVERY NEW CLIENT REFERRED TO MAID FOR YOU HOUSEKEEPING, YOU WILL RECEIVE A ONE
+                                TIME CREDIT OF <strong>$25</strong>.
+                                REFERRED CLIENT MUST COMPLETE A CLEANING IN ORDER TO RECEIVE THE REFERRAL CREDIT.
+                            </p>
+                            <div class="text-center">
+                                <img src="{{url_for('static', filename='img/refer.jpg')}}" alt="Referral Program"
+                                    class="img-fluid rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="testimonialCarousel" class="carousel slide mt-4 mb-" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" style="background-image: url('./static/img/c-1.jpg');">
+                            <div class="carousel-caption-custom ">
+                                <div class="caption-box">
+                                    <h5>Jill B.</h5>
+                                    <p>"As a single mother of five kids, I don’t have time to clean as thoroughly.
+                                        They come in every two weeks to clean my kitchen and bathroom and I love it"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background-image: url('./static/img/c-2.jpg');">
+                            <div class="carousel-caption-custom ">
+                                <div class="caption-box">
+                                    <h5>Nancy S.</h5>
+                                    <p>"I am definitely pleased with my house cleaning. It feels good to finally
+                                        find someone who knows how to get the job done correctly. I highly recommend
+                                        this company."</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background-image: url('./static/img/c-3.jpg');">
+                            <div class="carousel-caption-custom ">
+                                <div class="caption-box">
+                                    <h5>Carol-Ann L.</h5>
+                                    <p>"I have been using this company to clean my house for months now on a
+                                        biweekly service.
+                                        The owner Carrie got back to me right away when I reached out to inquire
+                                        about service.
+                                        She is nothing short of amazing as a professional, a business owner , and as
+                                        a person in general.
+                                        She's down to earth , always on time , and does a spotless job in every
+                                        room, great prices and affordable.
+                                        I highly recommend her company for anyone seeking an awesome job done !!!"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" style="background-image: url('./static/img/c-4.jpg');">
+                            <div class="carousel-caption-custom ">
+                                <div class="caption-box">
+                                    <h5>Michael Brown</h5>
+                                    <p>"Exceptional quality and customer service. Would highly recommend to anyone."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{url_for('static', filename='img/kitchen-after.jpg')}}" class="img-fluid"
+                        alt="Before & After">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal2" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{url_for('static', filename='img/microwave-after.jpg')}}" class="img-fluid"
+                        alt="Before & After">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{url_for('static', filename='img/bedroom-before.jpg')}}" class="img-fluid"
+                        alt="Before & After">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container text-center">
+        <section class="bg-light py-3 py-md-5">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                        <h2 class="mb-4 display-5 text-center" id="contact-form">Contact</h2>
+                        <p class="text-secondary mb-5 text-center">The best way to contact us is to use our contact
+                            form
+                            below. Please fill out all of the required fields and we will get back to you as soon as
+                            possible.</p>
+                        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row justify-content-lg-center">
+                    <div class="col-12 col-lg-9">
+                        <div class="bg-white border rounded shadow-sm overflow-hidden">
+
+                            <form action="{{ url_for('home.submit_quote') }}" method="post">
+                                {{ form.hidden_tag() }}
+                                <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                                    <div class="col-12 col-md-6">
+                                        <label for="full_name" class="form-label">Full Name <span
+                                                class="text-primary">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM14 14s-1-1.5-6-1.5S2 14 2 14s1-4 6-4 6 4 6 4z" />
+                                                </svg>
+                                            </span>
+                                            {{ form.full_name(class="form-control") }}
+                                        </div>
+                                        {% for error in form.full_name.errors %}
+                                        <div class="error">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label for="phone" class="form-label">Phone Number <span
+                                                class="text-primary">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                                </svg>
+                                            </span>
+                                            {{ form.phone(class="form-control") }}
+                                        </div>
+                                        {% for error in form.phone.errors %}
+                                        <div class="text-primary">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label for="heard_about" class="form-label">How Did You Hear About Us? <span
+                                                class="text-primary">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M3 12.5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                            </span>
+                                            {{ form.heard_about(class="form-select") }}
+                                        </div>
+                                        {% for error in form.heard_about.errors %}
+                                        <div class="error">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label for="property_type" class="form-label">Property Type? <span
+                                                class="text-primary">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M3 12.5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                            </span>
+                                            {{ form.property_type(class="form-select") }}
+                                        </div>
+                                        {% for error in form.property_type.errors %}
+                                        <div class="error">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="special_attention" class="form-label">Are There Any Specific Areas
+                                            or Items That Require Special Attention?</label>
+                                        {{ form.special_attention(class="form-control", rows="3") }}
+                                        {% for error in form.special_attention.errors %}
+                                        <div class="error">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-12 mt-2">
+                                        <label for="other_message" class="form-label">Is There Anything Else You'd Like
+                                            Us To Know?</label>
+                                        {{ form.other_message(class="form-control", rows="3") }}
+                                        {% for error in form.other_message.errors %}
+                                        <div class="error">{{ error }}</div>
+                                        {% endfor %}
+                                        <div class="d-grid mt-4">
+                                            {{ hcaptcha }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-2">
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    </div>
+
+
+
+    <footer class="container-fluid text-center">
+        <p>©2024 Maid for You Houskeeping </p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+       window.onload = function() {
+            // This will scroll to the element identified by scroll_to after everything is loaded
+            var scrollTo = '{{ scroll_to }}';
+            if (scrollTo) {
+                var element = document.querySelector(scrollTo);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        };
+    </script>
+</body>
+
+
+</html>
