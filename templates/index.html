@@ -122,7 +122,7 @@
         {% for category, message in messages %}
         <strong>{{ message }}</strong>
         {% endfor %}
-        <button type="button" class="btn btn-secondary close" aria-label="Close" data-dismiss="alert" >&times</button>
+        <button type="button" class="btn btn-secondary close" aria-label="Close" data-dismiss="alert">&times</button>
     </div>
     {% endif %}
     {% endwith %}
@@ -190,13 +190,29 @@ background-repeat:no-repeat">
                         </div>
                     </div>
                 </div>
-
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-10"> <!-- Adjust the size of this column to control row width -->
+                            <div class="row justify-content-center">
+                                <div class="col-sm-4 mt-3 d-flex justify-content-center">
+                                    <img src="{{url_for('static', filename='img/cleaning-1.png')}}" class="img-fluid rounded" alt="Cleaning 1">
+                                </div>
+                                <div class="col-sm-4 mt-3 d-flex justify-content-center">
+                                    <img src="{{url_for('static', filename='img/cleaning-2.png')}}" class="img-fluid rounded" alt="Cleaning 2">
+                                </div>
+                                <div class="col-sm-4 mt-3 d-flex justify-content-center">
+                                    <img src="{{url_for('static', filename='img/cleaning-3.png')}}" class="img-fluid rounded" alt="Cleaning 3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div><br>
         <div class="container text-center">
             <h2 id="services" class=" display-5 text-center ">Services</h2>
-            <div class="row">
-                <div class="col-sm-4">
+            <div class="row justify-content-around">
+                <div class="col-sm-5">
                     <img src="{{url_for('static', filename='img/kitchen-after.jpg')}}" class="img-responsive"
                         style="width:100%; cursor: pointer;" alt="Image" data-bs-toggle="modal"
                         data-bs-target="#imageModal1">
@@ -218,7 +234,7 @@ background-repeat:no-repeat">
 
 
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <img src="{{url_for('static', filename='img/microwave-after.jpg')}}" class="img-responsive"
                         style="width:100%; cursor: pointer;" alt="Image" data-bs-toggle="modal"
                         data-bs-target="#imageModal2">
@@ -244,32 +260,49 @@ background-repeat:no-repeat">
                     </div>
 
                 </div>
-                <div class="col-sm-4">
-                    <img src="{{url_for('static', filename='img/bedroom-before.jpg')}}" class="img-responsive"
-                        style="width:100%; cursor: pointer;" alt="Image" data-bs-toggle="modal"
-                        data-bs-target="#imageModal3">
-                    <div class="card m-3 bg-white border rounded shadow-sm overflow-hidden">
-                        <div class="card-header">
-                            <h5 class="card-title">Bedroom(s) includes:</h5>
+            </div>
+            <div class="container mt-5">
+                <div class="row justify-content-around">
+                    <div class="col-md-5 col-lg-5">
+                        <img src="{{ url_for('static', filename='img/bedroom-before.jpg') }}" class="img-fluid rounded mt-3" style="cursor: pointer;" alt="Image" data-bs-toggle="modal" data-bs-target="#imageModal3">
+                        <div class="card m-3 bg-white border rounded shadow-sm overflow-hidden">
+                            <div class="card-header">
+                                <h5 class="card-title">Bedroom(s) includes:</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Moderate dusting of furniture</li>
+                                <li class="list-group-item">Ceiling fans</li>
+                                <li class="list-group-item">Sweep floors</li>
+                                <li class="list-group-item">Clean hardwood</li>
+                                <li class="list-group-item">Vacuum carpets/rugs</li>
+                                <li class="list-group-item">Make beds</li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Moderate dusting of furniture</li>
-                            <li class="list-group-item">Ceiling fans</li>
-                            <li class="list-group-item">Sweep floors</li>
-                            <li class="list-group-item">Clean hardwood</li>
-                            <li class="list-group-item">Vacuum carpets/rugs</li>
-                            <li class="list-group-item">Make beds</li>
-                        </ul>
+                    </div>
+                    <div class="col-md-5 col-lg-5">
+                        <img src="{{ url_for('static', filename='img/kitchen-clean.png') }}" class="img-fluid rounded mt-3" style="cursor: pointer;" alt="Image" data-bs-toggle="modal" data-bs-target="#imageModal4">
+                        <div class="card m-3 bg-white border rounded shadow-sm overflow-hidden">
+                            <div class="card-header">
+                                <h5 class="card-title">Kitchen includes:</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Counters</li>
+                                <li class="list-group-item">Sinks</li>
+                                <li class="list-group-item">Wipe down all appliances</li>
+                                <li class="list-group-item">Inside of microwave</li>
+                                <li class="list-group-item">Trash</li>
+                                <li class="list-group-item">Floors</li>
+                            </ul>
+                            <div class="card-body">
+                                <strong>Add-ons:</strong>
+                                <hr>
+                                <p>Inside of oven: starting at $50 - Inside of refrigerator: starting at $50</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container mt-5 mb-5">
-                <div class="mt-3 mb-3">
-                    <img src="{{url_for('static', filename='img/cleaning1.jpg')}}" style="height: 100%;"
-                        class="img-fluid rounded" alt="Cleaning">
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-6">
+                <div class="row justify-content-around mt-5 mb-5">
+                    <div class="col-12 col-md-6 mt-3 mb-3">
                         <h2 class="mb-3">Ask us today about our gift certificates!</h2>
                         <h3>Perfect for:</h3>
                         <h4>Holidays</h4>
@@ -278,266 +311,284 @@ background-repeat:no-repeat">
                         <h4>and much more!</h4>
                     </div>
                     <div class="col-12 col-md-6 mt-3 mb-3">
-                        <img src="{{url_for('static', filename='img/giftcert.png')}}" class="img-fluid rounded"
-                            alt="Gift Certificate">
-                    </div>
-
-                </div>
-
-                <div class=" mt-2 mb-2 ">
-                    <div class="card">
-                        <div class="card-body">
-                            <h1 class="card-title text-center font-weight-bold">REFERRAL PROGRAM!</h1>
-                            <p class="card-text">
-                                FOR EVERY NEW CLIENT REFERRED TO MAID FOR YOU HOUSEKEEPING, YOU WILL RECEIVE A ONE
-                                TIME CREDIT OF <strong>$25</strong>.
-                                REFERRED CLIENT MUST COMPLETE A CLEANING IN ORDER TO RECEIVE THE REFERRAL CREDIT.
-                            </p>
-                            <div class="text-center">
-                                <img src="{{url_for('static', filename='img/refer.jpg')}}" alt="Referral Program"
-                                    class="img-fluid rounded">
-                            </div>
-                        </div>
+                        <img src="{{ url_for('static', filename='img/giftcert.png') }}" class="img-fluid rounded" alt="Gift Certificate">
                     </div>
                 </div>
+            </div>
+            
 
-
-                <div id="testimonialCarousel" class="carousel slide mt-4 mb-" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" style="background-image: url('./static/img/c-1.jpg');">
-                            <div class="carousel-caption-custom ">
-                                <div class="caption-box">
-                                    <h5>Jill B.</h5>
-                                    <p>"As a single mother of five kids, I don’t have time to clean as thoroughly.
-                                        They come in every two weeks to clean my kitchen and bathroom and I love it"
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="background-image: url('./static/img/c-2.jpg');">
-                            <div class="carousel-caption-custom ">
-                                <div class="caption-box">
-                                    <h5>Nancy S.</h5>
-                                    <p>"I am definitely pleased with my house cleaning. It feels good to finally
-                                        find someone who knows how to get the job done correctly. I highly recommend
-                                        this company."</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="background-image: url('./static/img/c-3.jpg');">
-                            <div class="carousel-caption-custom ">
-                                <div class="caption-box">
-                                    <h5>Carol-Ann L.</h5>
-                                    <p>"I have been using this company to clean my house for months now on a
-                                        biweekly service.
-                                        The owner Carrie got back to me right away when I reached out to inquire
-                                        about service.
-                                        She is nothing short of amazing as a professional, a business owner , and as
-                                        a person in general.
-                                        She's down to earth , always on time , and does a spotless job in every
-                                        room, great prices and affordable.
-                                        I highly recommend her company for anyone seeking an awesome job done !!!"
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="background-image: url('./static/img/c-4.jpg');">
-                            <div class="carousel-caption-custom ">
-                                <div class="caption-box">
-                                    <h5>Michael Brown</h5>
-                                    <p>"Exceptional quality and customer service. Would highly recommend to anyone."
-                                    </p>
+                    <div class=" mt-2 mb-2 ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title text-center font-weight-bold">REFERRAL PROGRAM!</h1>
+                                <p class="card-text">
+                                    FOR EVERY NEW CLIENT REFERRED TO MAID FOR YOU HOUSEKEEPING, YOU WILL RECEIVE A ONE
+                                    TIME CREDIT OF <strong>$25</strong>.
+                                    REFERRED CLIENT MUST COMPLETE A CLEANING IN ORDER TO RECEIVE THE REFERRAL CREDIT.
+                                </p>
+                                <div class="text-center">
+                                    <img src="{{url_for('static', filename='img/refer.jpg')}}" alt="Referral Program"
+                                        class="img-fluid rounded">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+
+
+                    <div id="testimonialCarousel" class="carousel slide mt-4 mb-" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" style="background-image: url('./static/img/c-1.jpg');">
+                                <div class="carousel-caption-custom ">
+                                    <div class="caption-box">
+                                        <h5>Jill B.</h5>
+                                        <p>"As a single mother of five kids, I don’t have time to clean as thoroughly.
+                                            They come in every two weeks to clean my kitchen and bathroom and I love it"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" style="background-image: url('./static/img/c-2.jpg');">
+                                <div class="carousel-caption-custom ">
+                                    <div class="caption-box">
+                                        <h5>Nancy S.</h5>
+                                        <p>"I am definitely pleased with my house cleaning. It feels good to finally
+                                            find someone who knows how to get the job done correctly. I highly recommend
+                                            this company."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" style="background-image: url('./static/img/c-3.jpg');">
+                                <div class="carousel-caption-custom ">
+                                    <div class="caption-box">
+                                        <h5>Carol-Ann L.</h5>
+                                        <p>"I have been using this company to clean my house for months now on a
+                                            biweekly service.
+                                            The owner Carrie got back to me right away when I reached out to inquire
+                                            about service.
+                                            She is nothing short of amazing as a professional, a business owner , and as
+                                            a person in general.
+                                            She's down to earth , always on time , and does a spotless job in every
+                                            room, great prices and affordable.
+                                            I highly recommend her company for anyone seeking an awesome job done !!!"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item" style="background-image: url('./static/img/c-4.jpg');">
+                                <div class="carousel-caption-custom ">
+                                    <div class="caption-box">
+                                        <h5>Michael Brown</h5>
+                                        <p>"Exceptional quality and customer service. Would highly recommend to anyone."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="{{url_for('static', filename='img/kitchen-after.jpg')}}" class="img-fluid"
-                        alt="Before & After">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="imageModal2" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="{{url_for('static', filename='img/microwave-after.jpg')}}" class="img-fluid"
-                        alt="Before & After">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="{{url_for('static', filename='img/bedroom-before.jpg')}}" class="img-fluid"
-                        alt="Before & After">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <div class="container text-center">
-        <section class="bg-light py-3 py-md-5">
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-                        <h2 class="mb-4 display-5 text-center" id="contact-form">Contact</h2>
-                        <p class="text-secondary mb-5 text-center">The best way to contact us is to use our contact
-                            form
-                            below. Please fill out all of the required fields and we will get back to you as soon as
-                            possible.</p>
-                        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{url_for('static', filename='img/kitchen-after.jpg')}}" class="img-fluid"
+                            alt="Before & After">
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="container">
-                <div class="row justify-content-lg-center">
-                    <div class="col-12 col-lg-9">
-                        <div class="bg-white border rounded shadow-sm overflow-hidden">
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal2" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{url_for('static', filename='img/microwave-after.jpg')}}" class="img-fluid"
+                            alt="Before & After">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                            <form action="{{ url_for('home.submit_quote') }}" method="post">
-                                {{ form.hidden_tag() }}
-                                <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
-                                    <div class="col-12 col-md-6">
-                                        <label for="full_name" class="form-label">Full Name <span
-                                                class="text-primary">*</span></label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM14 14s-1-1.5-6-1.5S2 14 2 14s1-4 6-4 6 4 6 4z" />
-                                                </svg>
-                                            </span>
-                                            {{ form.full_name(class="form-control") }}
-                                        </div>
-                                        {% for error in form.full_name.errors %}
-                                        <div class="error">{{ error }}</div>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label for="phone" class="form-label">Phone Number <span
-                                                class="text-primary">*</span></label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                                                </svg>
-                                            </span>
-                                            {{ form.phone(class="form-control") }}
-                                        </div>
-                                        {% for error in form.phone.errors %}
-                                        <div class="text-primary">{{ error }}</div>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label for="heard_about" class="form-label">How Did You Hear About Us? <span
-                                                class="text-primary">*</span></label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                        d="M3 12.5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z" />
-                                                </svg>
-                                            </span>
-                                            {{ form.heard_about(class="form-select") }}
-                                        </div>
-                                        {% for error in form.heard_about.errors %}
-                                        <div class="error">{{ error }}</div>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label for="property_type" class="form-label">Property Type? <span
-                                                class="text-primary">*</span></label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                        d="M3 12.5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z" />
-                                                </svg>
-                                            </span>
-                                            {{ form.property_type(class="form-select") }}
-                                        </div>
-                                        {% for error in form.property_type.errors %}
-                                        <div class="error">{{ error }}</div>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="special_attention" class="form-label">Are There Any Specific Areas
-                                            or Items That Require Special Attention?</label>
-                                        {{ form.special_attention(class="form-control", rows="3") }}
-                                        {% for error in form.special_attention.errors %}
-                                        <div class="error">{{ error }}</div>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="col-12 mt-2">
-                                        <label for="other_message" class="form-label">Is There Anything Else You'd Like
-                                            Us To Know?</label>
-                                        {{ form.other_message(class="form-control", rows="3") }}
-                                        {% for error in form.other_message.errors %}
-                                        <div class="error">{{ error }}</div>
-                                        {% endfor %}
-                                        <div class="d-grid mt-4">
-                                            {{ hcaptcha }}
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mt-2">
-                                        <div class="d-grid">
-                                            <button class="btn btn-primary btn-lg" type="submit">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{url_for('static', filename='img/bedroom-before.jpg')}}" class="img-fluid"
+                            alt="Before & After">
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal4" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{url_for('static', filename='img/kitchen-clean.png')}}" class="img-fluid"
+                            alt="Before & After">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="container text-center">
+            <section class="bg-light py-3 py-md-5">
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                            <h2 class="mb-4 display-5 text-center" id="contact-form">Contact</h2>
+                            <p class="text-secondary mb-5 text-center">The best way to contact us is to use our contact
+                                form
+                                below. Please fill out all of the required fields and we will get back to you as soon as
+                                possible.</p>
+                            <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+
+                <div class="container">
+                    <div class="row justify-content-lg-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="bg-white border rounded shadow-sm overflow-hidden">
+
+                                <form action="{{ url_for('home.submit_quote') }}" method="post">
+                                    {{ form.hidden_tag() }}
+                                    <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                                        <div class="col-12 col-md-6">
+                                            <label for="full_name" class="form-label">Full Name <span
+                                                    class="text-primary">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM14 14s-1-1.5-6-1.5S2 14 2 14s1-4 6-4 6 4 6 4z" />
+                                                    </svg>
+                                                </span>
+                                                {{ form.full_name(class="form-control") }}
+                                            </div>
+                                            {% for error in form.full_name.errors %}
+                                            <div class="error">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="phone" class="form-label">Phone Number <span
+                                                    class="text-primary">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                                    </svg>
+                                                </span>
+                                                {{ form.phone(class="form-control") }}
+                                            </div>
+                                            {% for error in form.phone.errors %}
+                                            <div class="text-primary">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="heard_about" class="form-label">How Did You Hear About Us? <span
+                                                    class="text-primary">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M3 12.5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z" />
+                                                    </svg>
+                                                </span>
+                                                {{ form.heard_about(class="form-select") }}
+                                            </div>
+                                            {% for error in form.heard_about.errors %}
+                                            <div class="error">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label for="property_type" class="form-label">Property Type? <span
+                                                    class="text-primary">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M3 12.5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 0 1H3.5a.5.5 0 0 1-.5-.5z" />
+                                                    </svg>
+                                                </span>
+                                                {{ form.property_type(class="form-select") }}
+                                            </div>
+                                            {% for error in form.property_type.errors %}
+                                            <div class="error">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <label for="special_attention" class="form-label">Are There Any Specific
+                                                Areas
+                                                or Items That Require Special Attention?</label>
+                                            {{ form.special_attention(class="form-control", rows="3") }}
+                                            {% for error in form.special_attention.errors %}
+                                            <div class="error">{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <label for="other_message" class="form-label">Is There Anything Else You'd
+                                                Like
+                                                Us To Know?</label>
+                                            {{ form.other_message(class="form-control", rows="3") }}
+                                            {% for error in form.other_message.errors %}
+                                            <div class="error">{{ error }}</div>
+                                            {% endfor %}
+                                            <div class="d-grid mt-4">
+                                                {{ hcaptcha }}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <div class="d-grid">
+                                                <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 
 
@@ -549,7 +600,7 @@ background-repeat:no-repeat">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-       window.onload = function() {
+        window.onload = function () {
             // This will scroll to the element identified by scroll_to after everything is loaded
             var scrollTo = '{{ scroll_to }}';
             if (scrollTo) {
