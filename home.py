@@ -27,7 +27,7 @@ def submit_quote():
         # Process form data
         flash("Form submitted successfully! We'll be in touch shortly!", 'success')
         subject = "New Quote Request"
-        body = create_formatted_string_from_wtform(form)
+        body = form.format_data()
         print(body)
         to_email = "maid4youhk@yahoo.com"
         from_email = "maid4uct@gmail.com"

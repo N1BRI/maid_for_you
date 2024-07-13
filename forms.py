@@ -26,3 +26,25 @@ class ContactForm(FlaskForm):
                                       validators=[Length(max=500)])  
     other_message = TextAreaField("Is There Anything Else You'd Like Us To Know?",
                                   validators=[Length(max=500)]) 
+    
+    def format_data(self):
+        # Mapping for select fields
+        heard_about_mapping = dict(self.heard_about.choices)
+        property_type_mapping = dict(self.property_type.choices)
+        
+        formatted_data = []
+        
+        # Iterate through each field in the form
+        for field in self:
+            if field.name == 'csrf_token':
+                continue
+            if field.name == 'heard_about':
+                value = heard_about_mapping.get(field.data, 'Unknown')
+            elif field.name == 'property_type':
+                value = property_type_mapping.get(field.data, 'Unknown')
+            else:
+                value = field.data
+            
+            formatted_data.append(f"{field.label.text}: {value}")
+        
+        return "\n".join(formatted_data)
