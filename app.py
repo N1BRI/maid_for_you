@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 import home
 from flask import Flask
 from flask_hcaptcha import hCaptcha
